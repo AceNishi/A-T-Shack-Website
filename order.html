@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Order Now</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        #menu th, #menu td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            color: #fff;
+        }
+
+        #menu th {
+            background-color: #444;
+        }
+
+        #menu tr:hover {
+            background-color: #222;
+        }
+
+        #cart-items {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            display: none;
+        }
+
+        #cart-items th, #cart-items td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            color: #fff;
+        }
+
+        #cart-items tfoot td {
+            text-align: right;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        button {
+            padding: 6px 12px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #222;
+        }
+
+        input[type="text"] {
+            padding: 6px 12px;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            padding: 6px 12px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+
+<table id="menu">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Choco-Cake Shake</td>
+            <td>₱110</td>
+            <td><button onclick="addToCart('Choco-Cake Shake', 110)">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td>Crazy Berry Shake</td>
+            <td>₱110</td>
+            <td><button onclick="addToCart('Crazy Berry Shake', 110)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Creamy Latte</td>
+            <td>₱110</td>
+            <td><button onclick="addToCart('Creamy Latte', 110)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Americano</td>
+            <td>₱110</td>
+            <td><button onclick="addToCart('Americano', 110)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Mango Juice</td>
+            <td>₱60</td>
+            <td><button onclick="addToCart('Mango Juice', 60)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Iced Tea</td>
+            <td>₱60</td>
+            <td><button onclick="addToCart('Iced Tea', 60)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Sparkling Lemon</td>
+            <td>₱60</td>
+            <td><button onclick="addToCart('Sparkling Lemon', 60)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Cheesy Fries</td>
+            <td>₱90</td>
+            <td><button onclick="addToCart('Cheesy Fries', 90)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Nachos Overload</td>
+            <td>₱120</td>
+            <td><button onclick="addToCart('Nachos Overload', 120)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Cheese Burger</td>
+            <td>₱180</td>
+            <td><button onclick="addToCart('Cheese Burger', 180)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>TLC Ham Sandwich</td>
+            <td>₱135</td>
+            <td><button onclick="addToCart('TLC Ham Sandwich', 135)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Overload Pizza</td>
+            <td>₱290</td>
+            <td><button onclick="addToCart('Overload Pizza', 290)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Cheese Pizza</td>
+            <td>₱200</td>
+            <td><button onclick="addToCart('Cheese Pizza', 200)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Regular Pepperoni</td>
+            <td>₱245</td>
+            <td><button onclick="addToCart('Regular Pepperoni', 245)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Glazed Doughnut</td>
+            <td>₱70</td>
+            <td><button onclick="addToCart('Glazed Doughnut', 70)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>ChocChip Cookie</td>
+            <td>₱55</td>
+            <td><button onclick="addToCart('ChocChip Cookie', 55)">Add to Cart</button></td>
+        </tr>
+		<tr>
+            <td>Strawberry Cheesecake</td>
+            <td>₱135</td>
+            <td><button onclick="addToCart('Strawberry Cheesecake', 135)">Add to Cart</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<table id="cart-items">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody id="cart-items-body">
+        <!-- Items -->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td><strong>Total:</strong></td>
+            <td id="total-price">₱0</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div id="checkout-form" style="display: none;">
+    <form onsubmit="submitOrder(event)">
+        <label for="fullname">Full Name:</label><br>
+        <input type="text" id="fullname" required><br><br>
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" required><br><br>
+        <label for="contact">Contact No.:</label><br>
+        <input type="text" id="contact" required><br><br>
+        <label for="amount">Amount Paid:</label><br>
+        <input type="text" id="amount" required><br><br>
+    </form>
+    <button onclick="showReceipt()">Submit Order and Get Receipt</button>
+</div>
+
+<script>
+    function addToCart(item, price) {
+        var cartItemsBody = document.getElementById('cart-items-body');
+        var totalPriceElement = document.getElementById('total-price');
+        var totalPrice = parseFloat(totalPriceElement.innerText.replace('₱', ''));
+
+      
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${item}</td>
+            <td>₱${price}</td>
+        `;
+        cartItemsBody.appendChild(newRow);
+
+        // total price
+        totalPrice += price;
+        totalPriceElement.innerText = '₱' + totalPrice;
+        
+        // items table 
+        document.getElementById('cart-items').style.display = 'table';
+        document.getElementById('checkout-form').style.display = 'block';
+    }
+
+    function submitOrder(event) {
+        event.preventDefault();
+        var fullName = document.getElementById('fullname').value;
+        var address = document.getElementById('address').value;
+        var contact = document.getElementById('contact').value;
+        var amountPaid = parseFloat(document.getElementById('amount').value);
+        var totalPrice = parseFloat(document.getElementById('total-price').innerText.replace('₱', ''));
+        var change = amountPaid - totalPrice;
+        
+        // Display confirmation message
+        alert('Thank you, ' + fullName + '! We have received your order.\nChange: ₱' + change.toFixed(2));
+        
+        // Clear cart and reset form
+        var cartItemsBody = document.getElementById('cart-items-body');
+        while (cartItemsBody.firstChild) {
+            cartItemsBody.removeChild(cartItemsBody.firstChild);
+        }
+        document.getElementById('total-price').innerText = '₱0';
+        document.getElementById('checkout-form').reset();
+        document.getElementById('cart-items').style.display = 'none';
+        document.getElementById('checkout-form').style.display = 'none';
+    }
+
+    function showReceipt() {
+    var fullName = document.getElementById('fullname').value;
+    var receiptItems = '';
+    var totalPrice = parseFloat(document.getElementById('total-price').innerText.replace('₱', ''));
+    var amountPaid = parseFloat(document.getElementById('amount').value);
+    var change = amountPaid - totalPrice;
+
+    // indicate items
+    var cartItemsBody = document.getElementById('cart-items-body');
+    var cartItems = cartItemsBody.getElementsByTagName('tr');
+    for (var i = 0; i < cartItems.length; i++) {
+        var item = cartItems[i].children[0].innerText;
+        var price = cartItems[i].children[1].innerText;
+        receiptItems += item + ': ' + price + '\n';
+    }
+
+    var receiptMessage = 'Receipt\n';
+    receiptMessage += 'Thank you for your order, ' + fullName + '!\n';
+    receiptMessage += 'Items:\n' + receiptItems + '\n';
+    receiptMessage += 'Total: ₱' + totalPrice.toFixed(2) + '\n';
+    receiptMessage += 'Amount Paid: ₱' + amountPaid.toFixed(2) + '\n';
+    receiptMessage += 'Change: ₱' + change.toFixed(2);
+
+    // print receipt
+    alert(receiptMessage);
+}
+</script>
+
+</body>
+</html>
